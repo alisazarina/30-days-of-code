@@ -1,0 +1,66 @@
+// to be corrected!
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        
+        // Read the number of test cases.
+        int T = sc.nextInt();
+        
+        // Constraint (validate the number of test cases):
+        if (T >= 1 && T <= 4) {
+            for (int i = 0; i < T; i++) {
+                int age = sc.nextInt();           // Read the age of the person for this test case.
+        
+                // Constraint (validate the age):
+                if (age >= -5 && age <= 30) {
+                Person person = new Person(age);  // Create a Person object with the provided age.
+                person.amIOld();                  // Determine and print the initial age group.
+            
+                for (int j = 0; j < 3; j++) {
+                    person.yearPasses();          // Simulate 3 years passing
+                }
+                person.amIOld();                  // Determine and print the updated age group.
+                System.out.println();            // Print an empty line for separation between test cases
+                } else {
+                    System.out.println("Age is out of range.");
+                }
+            }
+        } else {
+            System.out.println("Number of test cases is out of range.");
+        }
+        // sc.close();
+    }
+}
+
+class Person {
+    private int age;                            // Instance variable to store age
+    
+    public Person(int initialAge) {
+        if (initialAge < 0) {
+            this.age = 0;                       // If age is negative, set it to 0.
+            System.out.println("Age is not valid, setting age to 0.");
+        } else {
+            this.age = initialAge;              // Otherwise, set the age to the provided value
+        }
+    }
+    
+    public void amIOld() {
+        if (age < 13) {
+            System.out.println("You are young.");
+        } else if (age >= 13 && age < 18) {
+            System.out.println("You are a teenager.");
+        } else {
+            System.out.println("You are old");
+        }
+    }
+    
+    public void yearPasses() {
+        age++;                                  // Increment the age to simulate a year passing.
+    }
+}
